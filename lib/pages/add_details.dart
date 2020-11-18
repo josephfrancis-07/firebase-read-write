@@ -1,7 +1,7 @@
-
 import 'package:firebase_demo/models/intern_model.dart';
 import 'package:firebase_demo/repository/interns_repo.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddDetails extends StatefulWidget {
   @override
@@ -50,9 +50,25 @@ class _AddDetailsState extends State<AddDetails> {
                   name: name,
                   dept: dept,
                 );
-                detailsRepository.addItem(internship);
-
-                Navigator.of(context).pop();
+                name != null
+                    ? dept != null
+                        ? detailsRepository.addItem(internship)
+                        : Fluttertoast.showToast(
+                        msg: "Department Should not be null",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0)
+                    : Fluttertoast.showToast(
+                        msg: "Name Should not be null",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
               },
             ),
           ],

@@ -30,11 +30,11 @@ class _ViewDetailsState extends State<ViewDetails> {
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(20),
                       child: ListView.builder(
-                        itemCount: 4,//snapshot.data.documents.length,
+                        itemCount: snapshot.data.documents.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return ListTile(
+                          return snapshot.data.documents[index]['name']!=null?snapshot.data.documents[index]['dept']!=null?ListTile(
                             title: Text(snapshot.data.documents[index]['name']+"\n"+snapshot.data.documents[index]['dept'],)
-                          );
+                          ):ListTile(title:Text("null value")):ListTile(title:Text("Null Value"));
                         },
                       ),
                     ),
